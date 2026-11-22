@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "linux-baseline-auditor"
+version = "0.1.0"
+description = "KISA 리눅스 보안 기준선 읽기 전용 점검기 (PASS/FAIL/WARN/SKIP + JSON/HTML 리포트)"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "linux-baseline-auditor contributors" }]
+keywords = ["security", "baseline", "audit", "kisa", "linux", "blue-team"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: POSIX :: Linux",
+  "Topic :: Security",
+  "Environment :: Console",
+]
+dependencies = []
+
+[project.scripts]
+linux-baseline-auditor = "linux_baseline_auditor.cli:main"
+
+[project.optional-dependencies]
+dev = ["pytest>=7"]
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
