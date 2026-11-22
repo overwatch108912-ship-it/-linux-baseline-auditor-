@@ -97,14 +97,20 @@ python3 run.py --html report.html
 🛡️  linux-baseline-auditor v0.1.0
 대상: /   호스트: audit-vm   시각: 2026-11-22 09:02:23 KST
 
-[PASS] U-01 root 계정 원격 접속 제한 (상)
-       PermitRootLogin no — root 원격 로그인 차단
-[FAIL] U-16 /etc/passwd 파일 소유자 및 권한 설정 (상)
-       권한 0664: 644 이하가 아님 (그룹/기타 쓰기·실행 등)
+[PASS] U-04 비밀번호 파일 보호 (shadow 사용) (상)
+       전체 24개 계정이 shadow 로 위임됨
+[PASS] U-05 root 이외의 UID가 '0' 금지 (중)
+       UID 0 계정은 root 하나뿐
+[PASS] U-16 /etc/passwd 파일 소유자 및 권한 설정 (상)
+       권한 0644, 소유자 root(0) — 기준 충족
+[PASS] U-18 /etc/shadow 파일 소유자 및 권한 설정 (상)
+       권한 0400, 소유자 root(0) — 기준 충족
 [WARN] U-23 SUID, SGID, Sticky bit 설정 파일 점검 (상)
        허용 목록 밖 SUID/SGID 파일 1건: /usr/local/bin/helper
-[SKIP] U-18 /etc/shadow 파일 소유자 및 권한 설정 (상)
-       /etc/shadow 확인 불가: 파일 없음
+[FAIL] U-25 world writable 파일 점검 (상)
+       sticky bit 없는 world writable 항목 2건: /srv/www/upload, /opt/app/config
+[SKIP] U-01 root 계정 원격 접속 제한 (상)
+       sshd 설정 파일을 찾지 못해 판정할 수 없음 (sshd 미설치이거나 접근 권한 없음)
 
 ────────────────────────────────────────────────────────────
 PASS 4 · FAIL 1 · WARN 1 · SKIP 1   →  종합: FAIL (취약)
