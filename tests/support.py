@@ -12,12 +12,12 @@ from linux_baseline_auditor.models import AuditContext
 
 PASSWD_SAMPLE = """root:x:0:0:root:/root:/bin/bash
 daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
-hyojae:x:1000:1000:김효재 테스트:/home/hyojae:/bin/bash
+audituser:x:1000:1000::/home/audituser:/bin/bash
 """
 
 SHADOW_SAMPLE = """root:*:19000:0:99999:7:::
 daemon:*:19000:0:99999:7:::
-hyojae:$6$fakehash$abcdefghijklmnop:19000:0:99999:7:::
+audituser:$6$fakehash$abcdefghijklmnop:19000:0:99999:7:::
 """
 
 SSHD_DENY = """# 테스트용 sshd_config
